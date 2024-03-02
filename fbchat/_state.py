@@ -9,7 +9,7 @@ import random
 
 from . import _graphql, _util, _exception
 
-FB_DTSG_REGEX = re.compile(r'name="fb_dtsg" value="(.*?)"')
+FB_DTSG_REGEX = re.compile(r'"token":"(.*?)"')
 
 
 def get_user_id(session):
@@ -30,7 +30,6 @@ def session_factory(user_agent=None):
     session.headers["Accept"] = "text/html"
 
     # TODO: Deprecate setting the user agent manually
-    session.headers["User-Agent"] = user_agent or random.choice(_util.USER_AGENTS)
     return session
 
 
